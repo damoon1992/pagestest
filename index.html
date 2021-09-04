@@ -12,12 +12,20 @@
   analytics.page();
   }}();
 </script>
+<script type="text/javascript">
+  analytics.track('Page viewed', {
+    date: new Date()
+  });
+</script>
     </head>
     <body>
         <div class="text-center">
             <h1>Hello World</h1>
-            <p> Just a sample page with sample text and a sample CTA. Click and nothing will happen.</p>
+            <p> CLICK HERE</p>
             <a class="btn btn-primary">Signup now</a>
+            <script type="text/javascript">
+                 analytics.trackLink($("#btn btn-primary"), 'Post link clicked');
+            </script>
         </div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
