@@ -1,0 +1,12 @@
+import requests
+import pandas
+import time
+import io
+from datetime import datetime,date,timedelta
+from google.cloud import bigquery
+def main():
+csvResponse =requests.get('https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv').text
+pd=pandas.read_csv(io.StringIO(csvResponse))
+pd.drop(["Province/State",'Lat','Long'],axis=1,inplace=True)
+pd=pd.rename(columns={"Country/Region": "Country"})
+df_unpivoted = pd.melt(id_vars=['Country'], var_name='Date', value_name='Confirmed')
